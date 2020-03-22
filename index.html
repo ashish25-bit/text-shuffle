@@ -12,28 +12,32 @@
     </style>
 </head>
 <body>
-    <h2 class="header">BEECLUST</h2>
+    <h2 class="header">BEECLUST MRSL</h2>
 
     <script>
         const header = document.querySelector('.header')
         let str = ['!@','#','$','%','^&','*','(',')','-','+','/','[',']']
+        oheader = header.innerHTML
+        l = header.innerHTML.length
+        counter = 0 
 
         {
-            oheader = header.innerHTML
-            l = header.innerHTML.length
-            counter = 0
-            
-            setInterval(() => {
-                if(counter <= l){
-                    s = randomString()
-                    h = oheader.substring(0,counter)
-                    s = s.substring(counter,l)     
-                    header.innerHTML = h+s
-                    counter++
-                }
-            }, 100);
+            shuffle()
         }
 
+        function shuffle(){
+            time = setInterval(() => {
+                    if(counter <= l){
+                        s = randomString()
+                        h = oheader.substring(0,counter)
+                        s = s.substring(counter,l)     
+                        header.innerHTML = h+s
+                        counter++
+                    }
+                    else
+                        clearInterval(time)
+                }, 150);
+        }
         
         function randomString(){
             rndString = ''
@@ -44,6 +48,10 @@
             return rndString
         }
 
+        setInterval(() => {
+                counter = 0
+                shuffle()
+            }, 8000)
         
     </script>
 </body>
