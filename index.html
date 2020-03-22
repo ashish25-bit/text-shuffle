@@ -8,35 +8,60 @@
     <style>
         *{margin: 0;padding: 0;}
         body{font-family: 'Poppins', sans-serif;height: 100vh;background: #2b2f73;}
-        .header{position: absolute;top:35%;left: 50%;transform: translate(-50%,-50%); font-size: 50px;letter-spacing: 3px;color: white;}
+        .header,.header2{position: absolute;top:35%;left: 50%;transform: translate(-50%,-50%); font-size: 50px;letter-spacing: 3px;color: white;}
+        .header2{top:45%}
     </style>
 </head>
 <body>
     <h2 class="header">BEECLUST MRSL</h2>
+    <h2 class="header2">BEECLUST</h2>
 
     <script>
         const header = document.querySelector('.header')
+        const header2 = document.querySelector('.header2')
+
         let str = ['!@','#','$','%','^&','*','(',')','-','+','/','[',']']
+
         oheader = header.innerHTML
+        oheader2 = header2.innerHTML
+
         l = header.innerHTML.length
+        l2 = header2.innerHTML.length
+
         counter = 0 
+        counter2 = 0
 
         {
             shuffle()
+            shuffle2()
         }
 
         function shuffle(){
             time = setInterval(() => {
-                    if(counter <= l){
-                        s = randomString()
-                        h = oheader.substring(0,counter)
-                        s = s.substring(counter,l)     
-                        header.innerHTML = h+s
-                        counter++
-                    }
-                    else
-                        clearInterval(time)
-                }, 150);
+                if(counter <= l){
+                    s = randomString()
+                    h = oheader.substring(0,counter)
+                    s = s.substring(counter,l)     
+                    header.innerHTML = h+s
+                    counter++
+                }
+                else
+                    clearInterval(time)
+            }, 150);
+        }
+
+        function shuffle2(){
+            time2 = setInterval(() => {
+                if(counter2 <= l2){
+                    s2 = randomString()
+                    h2 = oheader2.substring(0,counter2)
+                    s2 = s2.substring(counter2,l2) 
+                    header2.innerHTML = h2+s2
+                    counter2++
+                }
+                else 
+                    clearInterval(time2)
+            }, 150)
         }
         
         function randomString(){
@@ -50,7 +75,9 @@
 
         setInterval(() => {
                 counter = 0
+                counter2 = 0
                 shuffle()
+                shuffle2()
             }, 8000)
         
     </script>
